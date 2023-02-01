@@ -77,7 +77,9 @@ export const CartModal = () => {
   };
 
   const onSuccess = () => {
-    console.log("_".repeat(50));
+    dispatch({
+      type: ACTION_TYPES.CLEAR_CART,
+    });
   };
 
   const onClose = () => {

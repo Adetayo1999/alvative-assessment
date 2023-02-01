@@ -12,6 +12,7 @@ export const ACTION_TYPES = Object.freeze({
   ADD_TO_CART: "ADD_TO_CART",
   REMOVE_FROM_CART: "REMOVE_FROM_CART",
   TOGGLE_CART: "TOGGLE_CART",
+  CLEAR_CART: "CLEAR_CART",
 });
 
 type ActionType = {
@@ -19,7 +20,8 @@ type ActionType = {
     | "GET_PRODUCTS_SUCCESS"
     | "ADD_TO_CART"
     | "REMOVE_FROM_CART"
-    | "TOGGLE_CART";
+    | "TOGGLE_CART"
+    | "CLEAR_CART";
   payload?: any;
 };
 
@@ -62,6 +64,13 @@ const reducer = (state: CartState, action: ActionType): CartState => {
       return {
         ...state,
         isCartOpen: !state.isCartOpen,
+      };
+
+    case "CLEAR_CART":
+      return {
+        ...state,
+        cartItems: [],
+        isCartOpen: false,
       };
 
     default:
